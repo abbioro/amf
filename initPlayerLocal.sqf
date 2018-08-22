@@ -8,7 +8,7 @@ sleep 2;
 player addEventHandler ["HandleRating", {0}];
 
 // Add a map marker for the player, helps with MOUT
-((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", '
+((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", {
     (positionCameraToWorld [0,0,1] vectorDiff positionCameraToWorld [0,0,0]) params ["_lx", "_ly"];
     _vehicle = vehicle player;
     (_this select 0) drawIcon [
@@ -21,7 +21,7 @@ player addEventHandler ["HandleRating", {0}];
         "",
         1
     ];
-'];
+}];
 
 // Set medic trait if this player has a medkit in their backpack
 if ("Medikit" in (backpackItems player)) then {
