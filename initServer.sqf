@@ -37,6 +37,10 @@ zeus_module setCuratorWaypointCost 0;
 zeus_module addCuratorEditableObjects [allUnits, true];
 zeus_module addCuratorEditableObjects [vehicles, true];
 
+// Set up Zeus for ACRE by disabling collision and simulation
+zeus_virtual hideObjectGlobal true;
+zeus_virtual enableSimulationGlobal false;
+
 // ACRE compatibility. Tie the position of the Zeus virtual entity to the
 // camera so that Zeus's voice comes out of the camera.
 addMissionEventHandler ["EachFrame", {

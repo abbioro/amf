@@ -14,7 +14,14 @@ if (player == zeus_virtual) then {
     [zeus_virtual, zeus_module] call BIS_fnc_addRespawnPosition;
     // Make Zeus mostly invulnerable, can still be killed by setDamage
     zeus_virtual allowDamage false;
+    // Set up Zeus for ACRE by disabling collision and simulation
+    [zeus_virtual, true] remoteExec ["hideObjectGlobal", 2];
+    [zeus_virtual, false] remoteExec ["enableSimulationGlobal", 2];
 };
+
+// Save player's loadout so it can be restored on respawn
+player setVariable ["amf_playerLoadout", getUnitLoadout player];
+
 // Disable rating system so that friendlies can't turn hostile
 player addEventHandler ["HandleRating", {0}];
 
