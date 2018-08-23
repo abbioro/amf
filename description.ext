@@ -1,0 +1,35 @@
+author="";
+onLoadName = "Zeus";
+
+respawnOnStart = -1;
+respawnDialog = 0; // Don't show scoreboard when dead
+respawnDelay = 30;
+respawnVehicleDelay = 30;
+
+// --- REGULAR RESPAWN SETTINGS ---
+respawn = 2; // "instant"
+respawnTemplates[] = {"MenuPosition"}; // Don't let players choose loadout
+
+// --- ACE SPECTATOR (TODO) ---
+//respawn = 3; // see https://community.bistudio.com/wiki/Arma_3_Respawn#Respawn_Types
+//respawnTemplates[] = {"ace_spectator"}; // ACE Spectator template
+
+// Enable debug console for logged in admins
+enableDebugConsole = 1;
+
+// Don't list AI scores
+aiKills = 1;
+
+// Prevent AI from filling empty player slots
+disabledAI = 1;
+
+// Revive config
+ReviveMode = 1; // Set to 0 to disable revive
+ReviveUnconsciousStateMode = 0;
+ReviveRequiredTrait = 0;
+ReviveRequiredItems = 2;
+ReviveRequiredItemsFakConsumed = 1;
+ReviveMedicSpeedMultiplier = 2;
+reviveDelay = 6;
+reviveForceRespawnDelay = 3;
+reviveBleedOutDelay = 300; // 5*60 = 300
