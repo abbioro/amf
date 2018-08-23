@@ -17,6 +17,9 @@ if (player == zeus_virtual) then {
     // Set up Zeus for ACRE by disabling collision and simulation
     [zeus_virtual, true] remoteExec ["hideObjectGlobal", 2];
     [zeus_virtual, false] remoteExec ["enableSimulationGlobal", 2];
+} else {
+    // Add this player to curator objects so Zeus can keep track of them
+    [zeus_module, [[player]]] remoteExec ["addCuratorEditableObjects", 2];
 };
 
 // Save player's loadout so it can be restored on respawn
