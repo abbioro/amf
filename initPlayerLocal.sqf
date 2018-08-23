@@ -41,6 +41,18 @@ player addEventHandler ["HandleRating", {0}];
     ];
 }];
 
+player addEventHandler ["Killed", {
+    params ["_unit", "_killer", "_instigator", "_useEffects"];
+    // Save ACRE2 radio channels
+    {
+        private _id = [_x] call acre_api_fnc_getRadioByType;
+        if (not isNil "_id") then {
+            _channel = [_id] call acre_api_fnc_getRadioChannel;
+            player setVariable [format ["%1_channel", _x], _channel];
+        };
+    } forEach ["ACRE_PRC343", "ACRE_PRC148"];
+}];
+
 // Set medic trait if this player has a medkit in their backpack
 if ("Medikit" in (backpackItems player)) then {
     player setUnitTrait ["medic", true];
