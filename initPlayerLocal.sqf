@@ -4,6 +4,13 @@
 // Give things a moment to settle
 sleep 2;
 
+// Zeus settings
+if (player == zeus_virtual) then {
+    // Add a respawn point for Zeus in case some mod kills them with setDamage
+    [zeus_virtual, zeus_module] call BIS_fnc_addRespawnPosition;
+    // Make Zeus mostly invulnerable, can still be killed by setDamage
+    zeus_virtual allowDamage false;
+};
 // Disable rating system so that friendlies can't turn hostile
 player addEventHandler ["HandleRating", {0}];
 
