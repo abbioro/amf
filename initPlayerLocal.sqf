@@ -1,5 +1,9 @@
 // initPlayerLocal.sqf
-// Executed locally when player joins (mission start or JIP)
+// Executed locally when a player joins (mission start or JIP)
+
+// #define AMF_DEBUG
+
+[] execVM "briefing.sqf";
 
 // Give things a moment to settle
 sleep 2;
