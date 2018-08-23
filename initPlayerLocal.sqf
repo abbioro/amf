@@ -25,14 +25,13 @@ player addEventHandler ["HandleRating", {0}];
 
 // Set medic trait if this player has a medkit in their backpack
 if ("Medikit" in (backpackItems player)) then {
-    player setUnitTrait ["Medic", true];
+    player setUnitTrait ["medic", true];
 };
 
 // Give anyone with the medic trait the correct ST HUD icon
 STHud_IsMedic = {
     params ["_unit"];
-    private _isatd = _unit getUnitTrait "Medic";
-    _isatd;
+    _unit getUnitTrait "medic"
 };
 
 hint "AMF loaded";
