@@ -67,4 +67,4 @@ STHud_IsMedic = {
     _unit getUnitTrait "medic"
 };
 
-hint "AMF loaded";
+systemChat "[AMF] Loaded";
