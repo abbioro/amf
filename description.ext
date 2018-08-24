@@ -14,8 +14,8 @@ respawnTemplates[] = {"MenuPosition"}; // Don't let players choose loadout
 //respawn = 3; // see https://community.bistudio.com/wiki/Arma_3_Respawn#Respawn_Types
 //respawnTemplates[] = {"ace_spectator"}; // ACE Spectator template
 
-// Enable debug console for logged in admins
-enableDebugConsole = 1;
+// Enable debug console for everyone
+enableDebugConsole = 2;
 
 // Don't list AI scores
 aiKills = 1;
