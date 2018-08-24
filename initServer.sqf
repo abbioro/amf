@@ -41,10 +41,4 @@ zeus_module addCuratorEditableObjects [vehicles, true];
 zeus_virtual hideObjectGlobal true;
 zeus_virtual enableSimulationGlobal false;
 
-// ACRE compatibility. Tie the position of the Zeus virtual entity to the
-// camera so that Zeus's voice comes out of the camera.
-addMissionEventHandler ["EachFrame", {
-    zeus_virtual setPos (getPos curatorCamera);
-}];
-
 systemChat "[AMF] (Server) Loaded";
