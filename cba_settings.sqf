@@ -66,6 +66,12 @@ force ace_map_gestures_maxRange = 7;
 // ACE Nightvision
 force ace_nightvision_aimDownSightsBlur = 1;
 
+// ACE Pointing
+force ace_finger_enabled = true;
+force ace_finger_indicatorColor = [0.0,0.0,0.0,0.35];
+force ace_finger_indicatorForSelf = true;
+force ace_finger_maxRange = 4;
+
 // ACE Pylons
 force ace_pylons_enabledForZeus = true;
 force ace_pylons_enabledFromAmmoTrucks = true;
