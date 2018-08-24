@@ -9,22 +9,24 @@
 sleep 2;
 
 // Zeus settings
-if (player == zeus_virtual) then {
+if (player == zeus_virtual) exitWith {
     // Add a respawn point for Zeus in case some mod kills them with setDamage
     [zeus_virtual, zeus_module] call BIS_fnc_addRespawnPosition;
+
     // Make Zeus mostly invulnerable, can still be killed by setDamage
     zeus_virtual allowDamage false;
+
     // Set up Zeus for ACRE by disabling collision and simulation
     [zeus_virtual, true] remoteExec ["hideObjectGlobal", 2];
     [zeus_virtual, false] remoteExec ["enableSimulationGlobal", 2];
+
     // ACRE compatibility. Tie the position of the Zeus virtual entity to the
     // camera so that Zeus's voice comes out of the camera.
     addMissionEventHandler ["EachFrame", {
         zeus_virtual setPos (getPos curatorCamera);
     }];
-} else {
-    // Add this player to curator objects so Zeus can keep track of them
-    [zeus_module, [[player]]] remoteExec ["addCuratorEditableObjects", 2];
+
+    systemChat "[AMF] (Zeus) Loaded";
 };
 
 // Add this player to curator objects so Zeus can keep track of them
