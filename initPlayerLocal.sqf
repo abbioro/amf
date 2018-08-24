@@ -27,6 +27,26 @@ if (player == zeus_virtual) then {
     [zeus_module, [[player]]] remoteExec ["addCuratorEditableObjects", 2];
 };
 
+// Add this player to curator objects so Zeus can keep track of them
+[zeus_module, [[player]]] remoteExec ["addCuratorEditableObjects", 2];
+
+// Make players invulnerable when downed. Works by removing the HandleDamage
+// handler that the Revive system adds and replacing it with one that leaves the
+// player unharmed if they are incapacitated. Credit for the code goes to Caddrel.
+waitUntil {!isNil {player getVariable "bis_revive_ehHandleDamage"}};
+player removeEventHandler["HandleDamage", player getVariable "bis_revive_ehHandleDamage"];
+player addEventHandler ["HandleDamage", {
+    params ["_unit", "_selection", "_damage"];
+
+    // != is a little faster than isEqualTo, which matters in a HandleDamage EH
+    if (lifeState player != "INCAPACITATED") then {
+        _damage = _this call bis_fnc_reviveEhHandleDamage;
+    } else {
+        _damage = 0;
+    };
+    _damage
+}];
+
 // Save player's loadout so it can be restored on respawn
 player setVariable ["amf_playerLoadout", getUnitLoadout player];
 
