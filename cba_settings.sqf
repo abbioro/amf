@@ -112,6 +112,9 @@ force acre_sys_core_ignoreAntennaDirection = true;
 force acre_sys_core_terrainLoss = 0;
 force acre_sys_core_revealToAI = true;
 
+// NIArms
+force niarms_magSwitch = false;
+
 // STUI Settings
 force STHud_Settings_Occlusion = true;
 force STHud_Settings_RemoveDeadViaProximity = false;
