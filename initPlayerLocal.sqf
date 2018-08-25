@@ -8,6 +8,22 @@
 // Give things a moment to settle
 sleep 2;
 
+// Save player's loadout so it can be restored on respawn
+player setVariable ["amf_playerLoadout", getUnitLoadout player];
+
+// Save ACRE2 radio channels on death
+player addEventHandler ["Killed", {
+    params ["_unit", "_killer", "_instigator", "_useEffects"];
+
+    {
+        private _id = [_x] call acre_api_fnc_getRadioByType;
+        if (not isNil "_id") then {
+            _channel = [_id] call acre_api_fnc_getRadioChannel;
+            player setVariable [format ["%1_channel", _x], _channel];
+        };
+    } forEach ["ACRE_PRC343", "ACRE_PRC148"];
+}];
+
 // Zeus settings
 if (player == zeus_virtual) exitWith {
     // Add a respawn point for Zeus in case some mod kills them with setDamage
@@ -49,9 +65,6 @@ player addEventHandler ["HandleDamage", {
     _damage
 }];
 
-// Save player's loadout so it can be restored on respawn
-player setVariable ["amf_playerLoadout", getUnitLoadout player];
-
 // Disable rating system so that friendlies can't turn hostile
 player addEventHandler ["HandleRating", {0}];
 
@@ -69,18 +82,6 @@ player addEventHandler ["HandleRating", {0}];
         "",
         1
     ];
-}];
-
-player addEventHandler ["Killed", {
-    params ["_unit", "_killer", "_instigator", "_useEffects"];
-    // Save ACRE2 radio channels
-    {
-        private _id = [_x] call acre_api_fnc_getRadioByType;
-        if (not isNil "_id") then {
-            _channel = [_id] call acre_api_fnc_getRadioChannel;
-            player setVariable [format ["%1_channel", _x], _channel];
-        };
-    } forEach ["ACRE_PRC343", "ACRE_PRC148"];
 }];
 
 // Set medic trait if this player has a medkit in their backpack
