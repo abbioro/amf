@@ -34,11 +34,7 @@ zeus_module setCuratorWaypointCost 0;
 } forEach ["place", "edit", "delete", "destroy", "group", "synchronize"];
 
 // Add mission objects to Zeus
-zeus_module addCuratorEditableObjects [allUnits, true];
+zeus_module addCuratorEditableObjects [allUnits - [zeus_virtual], true];
 zeus_module addCuratorEditableObjects [vehicles, true];
-
-// Set up Zeus for ACRE by disabling collision and simulation
-zeus_virtual hideObjectGlobal true;
-zeus_virtual enableSimulationGlobal false;
 
 systemChat "[AMF] (Server) Loaded";
