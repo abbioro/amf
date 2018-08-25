@@ -104,12 +104,12 @@ force acex_headless_endMission = 0;
 force acex_headless_log = false;
 
 // ACEX Volume
-acex_volume_enabled = true;
-acex_volume_fadeDelay = 1;
-acex_volume_lowerInVehicles = true;
-acex_volume_reduction = 7;
-acex_volume_remindIfLowered = false;
-acex_volume_showNotification = false;
+force acex_volume_enabled = true;
+force acex_volume_fadeDelay = 1;
+force acex_volume_lowerInVehicles = true;
+force acex_volume_reduction = 7;
+force acex_volume_remindIfLowered = false;
+force acex_volume_showNotification = false;
 
 // ACRE2
 force acre_sys_core_interference = true;
