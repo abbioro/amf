@@ -9,11 +9,16 @@ player setUnitLoadout (player getVariable ["amf_playerLoadout", []]);
 // Zeus shouldn't have to respawn, but if they do we need to re-enable some
 // stuff and move them back from the edge of the map.
 if (player == zeus_virtual) then {
-    [zeus_virtual, true] remoteExec ["hideObjectGlobal", 2];
-    [zeus_virtual, false] remoteExec ["enableSimulationGlobal", 2];
-    openCuratorInterface;
-    private _pos = (getPos zeus_module) params ["_x", "_y", "_z"];
-    curatorCamera setPos [_x, _y, _z + 5];
+    [] spawn {
+        setPlayerRespawnTime 0;
+        [zeus_virtual, true] remoteExec ["hideObjectGlobal", 2];
+        [zeus_virtual, false] remoteExec ["enableSimulationGlobal", 2];
+        openCuratorInterface;
+        // Wait until camera is opened before moving it
+        uiSleep 2;
+        private _pos = (getPos zeus_module) params ["_x", "_y", "_z"];
+        curatorCamera setPos [_x, _y, _z + 5];
+    };
 };
 
 // Restore ACRE2 radio channels

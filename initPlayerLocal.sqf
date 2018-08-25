@@ -3,6 +3,8 @@
 
 // #define AMF_DEBUG
 
+params ["_player", "_didJIP"];
+
 [] execVM "briefing.sqf";
 
 // Give things a moment to settle
@@ -29,6 +31,9 @@ if (player == zeus_virtual) exitWith {
     // Add a respawn point for Zeus in case some mod kills them with setDamage
     [zeus_virtual, zeus_module] call BIS_fnc_addRespawnPosition;
 
+    // Zeus should respawn instantly
+    setPlayerRespawnTime 0;
+
     // Make Zeus mostly invulnerable, can still be killed by setDamage
     zeus_virtual allowDamage false;
 
@@ -41,6 +46,11 @@ if (player == zeus_virtual) exitWith {
     addMissionEventHandler ["EachFrame", {
         zeus_virtual setPos (getPos curatorCamera);
     }];
+
+    // If Zeus JIPs, assume they crashed and need a reset
+    if (_didJIP) then {
+        player setDamage 1;
+    };
 
     systemChat "[AMF] (Zeus) Loaded";
 };
